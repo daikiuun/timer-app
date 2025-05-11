@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カスタムタイマー</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("service-worker.js")
+          .then((reg) => console.log("Service Worker registered:", reg))
+          .catch((err) =>
+            console.error("Service Worker registration failed:", err)
+          );
+      }
+    </script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#121212" />
+  </head>
+  <body>
+    <h1 id="time">00:00</h1>
+
+    <label>時間（分）: <input type="number" id="minutes" value="1" /></label
+    ><br />
+    <input type="file" id="soundFile" accept="audio/*" /><br />
+
+    <button onclick="startTimer()">スタート</button>
+    <button onclick="pauseTimer()">一時停止</button>
+    <button onclick="resetTimer()">リセット</button>
+    <button onclick="toggleDarkMode()">ダークモード切替</button>
+
+    <audio id="audio"></audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
